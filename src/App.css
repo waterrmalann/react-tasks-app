@@ -1,0 +1,125 @@
+:root {
+  --primary-bg: #282c34;
+  --primary-clr: #f5f5f5;
+  --secondary-clr: lightgray;
+  --inverse-clr: 255;
+}
+
+body {
+  background-color: var(--primary-bg);
+  font-size: calc(10px + 2vmin);
+  color: var(--primary-clr);
+  min-height: 100vh;
+}
+
+.container {
+  width: min(80%, 70.5rem);
+  margin-inline: auto;
+}
+
+.task-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-form .btn-add {
+  visibility: hidden;
+}
+
+.task-input {
+  display: block;
+  border: 1px solid rgba(var(--inverse-clr), var(--inverse-clr), var(--inverse-clr), 0.25);
+  width: min(40%, 70.5rem);
+  border-radius: 2rem;
+  padding: .75rem;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--secondary-clr);
+  transition: .2s;
+}
+
+.task-input:focus {
+  outline: 1px solid rgba(var(--inverse-clr), var(--inverse-clr), var(--inverse-clr), 0.5);
+  transition: outline .2s ease-in-out;
+}
+
+.task-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.task-list-divider {
+  border: none;
+  border: 1px solid rgba(var(--inverse-clr), var(--inverse-clr), var(--inverse-clr), 0.2);
+  width: 30%;
+  margin-inline: auto;
+}
+
+.task-item {
+  font-family: monospace;
+  cursor: pointer;
+}
+
+.task-item.completed {
+  text-decoration: line-through;
+  color: var(--secondary-clr);
+  filter: saturate(0%);
+}
+
+.task-item__check {
+  border-radius: 1rem;
+  height: 20px;
+  width: 20px;
+  clip-path: circle(46% at 50% 50%);
+  margin-right: .75rem;
+}
+
+.btn-delete {
+  border: none;
+  background: transparent;
+  color: var(--primary-clr);
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  margin-left: 2rem;
+  cursor: pointer;
+}
+
+.task-item:hover .btn-delete {
+  opacity: 1;
+  transition: opacity .2s ease-in-out;
+}
+
+.completed-task-accordion {
+  margin-top: 2rem;
+  background-color: rgba(14 ,14, 14, 0.15);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.completed-task-accordion summary {
+  margin-bottom: 2rem;
+}
+
+.completed-task-accordion summary h4 {
+  cursor: pointer;
+  padding: 1rem;
+  display: inline;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    --primary-bg: #f5f5f5;
+    --primary-clr: #282c34;
+    --secondary-clr: gray;
+    --inverse-clr: 14;
+  }
+
+  .task-item__check {
+    clip-path: none;
+  }
+}
